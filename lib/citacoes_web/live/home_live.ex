@@ -13,22 +13,28 @@ defmodule CitacoesWeb.HomeLive do
 
   def render(assigns) do
     ~H"""
-    <h1 class="text-2xl">Citacoes</h1>
-    <.button type="button" phx-click={show_modal("new-post-modal")}> Criar Citação </.button>
+    <div class="flex flex-col gap-3" >
+      <div class="flex flex-col gap-2">
+      <h1 class="text-2xl mx-auto">Home Page</h1>
+      <p class="mx-auto"> Role para baixo para ver as citações </p>
+      </div>
+      <div class="flex flex-col gap-1">
+      <.button type="button"  phx-click={show_modal("new-post-modal")}> Criar Citação </.button>
+      </div>
+      <div id="feed" phx-update="stream" class="flex flex-col gap-2">
+        <div :for={{dorm_id, post} <- @streams.posts} id={dorm_id}
+        class="mx-auto flex flex-col gap-2 p-4 border rounded">
 
-    <div id="feed" phx-update="stream" class="flex flex-col gap-2">
-      <div :for={{dorm_id, post} <- @streams.posts} id={dorm_id}
-      class="mx-auto flex flex-col gap-2 p-4 border rounded">
-
-        <img src={post.image_path} />
-        <p><%= post.user.email %></p>
-        <p><%= post.caption %></p>
+          <img src={post.image_path} />
+          <p><%= post.user.email %></p>
+          <p><%= post.caption %></p>
+        </div>
       </div>
     </div>
-
     <.modal id="new-post-modal">
       <.simple_form for={@form} phx-change="validate" phx-submit="save-post">
         <div class="flex flex-col gap-1">
+        <img src={~p"/images/logo.svg"} width="36" class="mx-auto" />
          <h1 class="mx-auto text-2xl">Criar Citação</h1>
          <p class="mx-auto"> Digite aqui a sua citação que deseja postar. </p>
         </div>
@@ -38,7 +44,7 @@ defmodule CitacoesWeb.HomeLive do
         <.input field={@form[:caption]} type="textarea" label="Citação" required />
         </div>
         <div class="flex flex-col gap-1">
-        <.button type="submit" phx-disable-with="Saving ..."> Criar Citação </.button>
+        <.button type="submit" phx-disable-with="Saving ..."> Postar Citação </.button>
         </div>
       </.simple_form>
     </.modal>
