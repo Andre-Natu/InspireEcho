@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :citacoes, Citacoes.Repo,
   username: "postgres",
-  password: "79801320natu;;",
+  password: "coloque_sua_senha_aqui",
   hostname: "localhost",
   database: "citacoes_dev",
   stacktrace: true,
