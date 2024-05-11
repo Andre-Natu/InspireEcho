@@ -1,5 +1,12 @@
 # Citacoes
 
+Alunos:
+	ANDRE LOPES DE SOUSA E OLIVEIRA
+ PEDRO LUCAS DA SILVA DOS SANTOS
+ AUGUSTO MIGUEL FAUSTINO DOS SANTOS
+ ELIAS VICTOR DE ANDRADE TORRES
+ CHRISTOPHER ALEC TAVARES
+ 
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
